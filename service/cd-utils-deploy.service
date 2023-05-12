@@ -1,0 +1,12 @@
+[Unit]
+Description=Cd utils para deployar
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/node /usr/local/lib/cd_utils/deploy_service.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
