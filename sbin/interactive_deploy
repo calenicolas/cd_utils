@@ -10,9 +10,9 @@ function deploy() {
   local SERVICE_PORT=$4
   local CONTAINER_NETWORK=$5
   local PROXY_CONTAINER_NAME=$6
-  local PROXY_NETWORK=$6
-  local PROTOCOL=$7
-  local SERVER_NAME=$8
+  local PROXY_NETWORK=$7
+  local PROTOCOL=$8
+  local SERVER_NAME=$9
 
   local CONTAINER_IP
   CONTAINER_IP=$(internal_docker_run "$GIT_REPO" "$IMAGE_NAME" "$CONTAINER_NAME" "$SERVICE_PORT" "$CONTAINER_NETWORK")
