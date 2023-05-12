@@ -1,0 +1,19 @@
+#!/bin/bash
+
+. /usr/local/lib/reverse_proxy/add_server_to_reverse_proxy.sh
+. /usr/local/lib/docker_utils/internal_docker_run.sh
+
+function deploy() {
+  local GIT_REPO=$1
+  local IMAGE_NAME=$2
+  local CONTAINER_NAME=$3
+  local SERVICE_PORT=$4
+  local CONTAINER_NETWORK=$5
+  local PROXY_CONTAINER_NAME=$6
+  local PROXY_NETWORK=$6
+  local PROTOCOL=$7
+
+  local CONTAINER_IP
+  CONTAINER_IP=$(internal_docker_run "$GIT_REPO" "$IMAGE_NAME" "$CONTAINER_NAME" "$SERVICE_PORT" "$CONTAINER_NETWORK")
+  add_server_to_reverse_proxy "$PROXY_CONTAINER_NAME" "$SERVER_NAME" "/" "$CONTAINER_IP" "$PROTOCOL" "$PROXY_NETWORK" "$CONTAINER_NETWORK" "$SERVICE_PORT"
+}
