@@ -30,7 +30,7 @@ function deploy() {
 
 echo "Git repository:"
 read -r GIT_REPO
-echo "Image name:"
+echo "Image name (Can include the host behind, ex 172.21.0.2:5000):"
 read -r IMAGE_NAME
 echo "Container name:"
 read -r CONTAINER_NAME

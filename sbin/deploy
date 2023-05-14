@@ -5,14 +5,14 @@
 . /usr/local/lib/docker_utils/internal_docker_run.sh
 
 function run_deploy() {
-  local GIT_REPO=$1
-  local IMAGE_NAME=$2
-  local CONTAINER_NAME=$3
-  local SERVICE_PORT=$4
-  local CONTAINER_NETWORK=$5
-  local PROXY_CONTAINER_NAME=$6
+  local IMAGE_NAME=$1
+  local CONTAINER_NAME=$2
+  local SERVICE_PORT=$3
+  local CONTAINER_NETWORK=$4
+  local PROXY_CONTAINER_NAME=$5
   local PROXY_NETWORK=$6
   local PROTOCOL=$7
+  local GIT_REPO=$8
 
   if [ -n "$GIT_REPO" ]
   then
@@ -24,4 +24,4 @@ function run_deploy() {
   add_server_to_reverse_proxy "$PROXY_CONTAINER_NAME" "$SERVER_NAME" "/" "$CONTAINER_IP" "$PROTOCOL" "$PROXY_NETWORK" "$CONTAINER_NETWORK" "$SERVICE_PORT"
 }
 
-run_deploy "$1" "$2" "$3" "$4" "$5" "$6" "$7"
+run_deploy "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8"
