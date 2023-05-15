@@ -2,11 +2,13 @@
 Description=Cd utils para deployar
 After=network.target
 
+[Timer]
+OnCalendar=*-*-* *:*:00
+
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/bin/node /usr/local/lib/cd_utils/deploy_service.js
-Restart=on-failure
+ExecStart=/usr/bin/node /usr/local/lib/cd_utils/run_pending_deploys.js
 
 [Install]
 WantedBy=multi-user.target
